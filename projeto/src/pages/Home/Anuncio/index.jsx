@@ -8,7 +8,7 @@ import Api, { urlApi } from "../../../services/Api";
 import { useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { FaMapMarkedAlt, FaMapMarkerAlt, FaSpinner } from "react-icons/fa";
-import { FaBrazilianRealSign, FaRegMoneyBill1 } from "react-icons/fa6";
+import { FaBrazilianRealSign } from "react-icons/fa6";
 
 const Anuncio = () => {
   const { slug } = useParams();
