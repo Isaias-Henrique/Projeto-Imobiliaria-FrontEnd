@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {FaArrowAltCircleDown, FaArrowsAltH, FaArrowUp, FaLongArrowAltUp} from "react-icons/fa";
+import {FaArrowUp} from "react-icons/fa";
 import {Button} from "./styles";
 
 

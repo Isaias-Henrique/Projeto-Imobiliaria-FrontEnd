@@ -8,7 +8,7 @@ const spin = keyframes`
 
 // Componente para o ícone spinner
 export const SpinnerIcon = styled.span`
-  display: inline-flex;              // muda de inline-block para inline-flex
+  display: inline-flex;       
   align-items: center;
   justify-content: center;
   margin-right: 8px;
@@ -17,7 +17,7 @@ export const SpinnerIcon = styled.span`
   vertical-align: middle;
 
   svg {
-    display: block;                 // força o SVG a não herdar comportamento de inline
+    display: block;               
   }
 `;
 export const Container = styled.div`

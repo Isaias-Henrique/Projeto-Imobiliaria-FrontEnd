@@ -7,7 +7,8 @@ import TopBanner from '../../../components/TopBanner';
 import Api, { urlApi } from "../../../services/Api";
 import { useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { FaMapMarkedAlt, FaMapMarkerAlt, FaSpinner } from "react-icons/fa"
+import { FaMapMarkedAlt, FaMapMarkerAlt, FaSpinner } from "react-icons/fa";
+import { FaBrazilianRealSign, FaRegMoneyBill1 } from "react-icons/fa6";
 
 const Anuncio = () => {
   const { slug } = useParams();
@@ -33,6 +34,7 @@ const Anuncio = () => {
     name,
     email,
     telefone,
+    valor,
     userId
   } = dataimovel;
 
@@ -91,6 +93,7 @@ const Anuncio = () => {
             <h2>{tipo}</h2>
             <h5><FaMapMarkedAlt/> Cidade: {cidade}</h5>
             <h5><FaMapMarkerAlt/> Endereço: {endereco}</h5>
+            <h5><FaBrazilianRealSign /> {valor}</h5>
             <p>{descricao}</p>
           </Descricao>
         </Esquerda>
