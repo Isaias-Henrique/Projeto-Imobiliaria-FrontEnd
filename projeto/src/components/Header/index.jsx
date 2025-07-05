@@ -61,6 +61,7 @@ const Header = () => {
 
      <Pesquisa>
         <input type="text" 
+        required
         placeholder='Pesquise a cidade do imóvel...'
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}

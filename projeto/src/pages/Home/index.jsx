@@ -4,7 +4,7 @@
   import { Header, Wrapper } from './styles'
   import Api from '../../services/Api'
   import { useLocation } from 'react-router-dom'
-  import { BsEmojiTear } from "react-icons/bs";
+  import ScrollTopButton from '../../components/ScrollButtonToTop'
 
   const Home = () => {
     const [imovel, setImovel] = useState([]);
@@ -31,6 +31,10 @@
       }
     }, [cidadeBusca]);
 
+    //volta para top da tela
+    useEffect(() =>{
+
+    })
 
     // Filtrar imóveis pela cidade
     const imoveisFiltrados = cidadeBusca
@@ -42,14 +46,14 @@
     return (
       <Fragment>
         <Banner/>
-          <Header>
+          <Header  ref={anunciosRef}>
               <h2>Encontre o imóvel dos seus sonhos!</h2>
               {cidadeBusca && (
                 <p style= {{ fontSize: '1.2rem', marginTop: '10px' }}>
                   Resultado para: <strong>{cidadeBusca}</strong> </p>
               )}
           </Header>
-          <Wrapper ref={anunciosRef}>
+          <Wrapper>
             {imoveisFiltrados.length === 0 ? (
               <p style={{fontSize: '1.2rem' }}> Nenhum imóvel encontrado para "{cidadeBusca}" 😕</p>
             ) : (
@@ -65,6 +69,7 @@
               />
             ))
             )}
+            <ScrollTopButton/>
           </Wrapper>
       </Fragment>
     );
