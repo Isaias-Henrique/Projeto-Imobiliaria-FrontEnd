@@ -50,7 +50,8 @@ const MeusImoveis = () => {
             key={item.id}
             thumb={item.thumb}
             tipo={item.tipo}
-            endereco={item.endereco}
+            cidade={item.cidade}
+            uf={item.uf}
             valor={item.valor}
             slug={item.slug}
             onDelete={() => handleDeleteClick(item.id)}

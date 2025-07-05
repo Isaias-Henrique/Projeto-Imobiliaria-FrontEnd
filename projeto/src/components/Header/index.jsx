@@ -4,7 +4,6 @@ import { BotaoBuscar, Container, Logo, Menu, Pesquisa } from './styles';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaUser, FaTimes } from 'react-icons/fa';
 import { useLocation, useHistory } from "react-router-dom";
-import Button from "../../components/Button"
 import axios from 'axios';
 
 const Header = () => {
