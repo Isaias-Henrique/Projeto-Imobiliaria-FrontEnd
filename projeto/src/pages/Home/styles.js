@@ -2,8 +2,9 @@ import styled from "styled-components"
 
 export const Header = styled.div `
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction:column;
     padding: 25px  150px;
 
 `

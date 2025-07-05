@@ -9,7 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 import { urlApi } from '../../../services/Api';
 
-const Card = ({thumb, tipo, cidade, valor, slug, onDelete}) => {
+const Card = ({thumb, tipo, uf,cidade, valor, slug, onDelete}) => {
   return (
     <Container>
         <Img>
@@ -19,7 +19,7 @@ const Card = ({thumb, tipo, cidade, valor, slug, onDelete}) => {
         <Descricao>
             <h4>{tipo}</h4>
             <Itens>
-                <span><FaMapMarkedAlt/> {cidade}</span>
+                <span><FaMapMarkedAlt/> {cidade}, {uf}</span>
                 <span>{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(Number(valor))}</span>
             </Itens>
             <Link to={`/imovel/${slug}`}>Veja mais <FaArrowRight/></Link>

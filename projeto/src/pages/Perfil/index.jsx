@@ -27,6 +27,8 @@ const Perfil = () => {
   const [message, setMessage] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [cidades, setCidades] = useState([]);
+
   const user = getLocalStorage();
   const { id } = user;
 
@@ -53,6 +55,25 @@ const Perfil = () => {
         console.log("Erro ao listar mensagens");
       });
   }, [id]);
+
+
+  useEffect(() => {
+    if (uf) {
+      fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
+      .then((response) => response.json())
+      .then((data) => {
+        const nomes = data.map((cidade) => cidade.nome);
+        setCidades(nomes);
+      })
+      .catch(() => {
+        toast.error("Erro ao carregar cidades da UF.");
+        setCidades([]);
+      });
+    } else {
+      setCidades([]);
+    }
+  }, [uf]);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -157,32 +178,54 @@ const Perfil = () => {
             <option value="Outro">Outro</option>
           </SelectTipo>
 
-          {/* Máscara para UF */}
-          <InputMask
-            mask="aa"
-            value={uf}
-            onChange={(e) => setUf(e.target.value.toUpperCase())}
-          >
-            {(inputProps) => (
-              <Input
-                {...inputProps}
-                type="text"
-                name="uf"
-                required
-                placeholder="UF..."
-                
-              />
-            )}
-          </InputMask>
-
-            <Input
-            type="text"
-            name="cidade"
+          
+          <SelectTipo
+            name="uf"
             required
-            placeholder="Informe a cidade do imóvel..."
-            value={cidade}
-            onChange={(e) => setCidade(e.target.value)}
-          />
+            value={uf}
+            onChange={(e) => setUf(e.target.value)}
+          >
+            <option value="">Selecione a UF</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </SelectTipo>
+
+           <SelectTipo
+           name="cidade"
+           required
+           value={cidade}
+           onChange={(e) => setCidade(e.target.value)}
+           >
+            <option value="">Selecione a cidade</option>
+            {cidades.map((cidade, index) => (
+              <option key={index} value={cidade}>{cidade}</option>
+            ))}
+           </SelectTipo>
 
           <Input
             type="text"
